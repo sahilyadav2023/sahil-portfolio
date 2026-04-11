@@ -54,7 +54,7 @@ function ProjectCard({ project, index }) {
 
       {/* ── Tech stack tags ──────────────────────────────────────────── */}
       <div className="pc-tech">
-        {project.tech.map((t) => (
+        {project.tech?.map((t) => (
           <span key={t} className="tag">{t}</span>
         ))}
       </div>
@@ -107,8 +107,7 @@ export default function Projects() {
           <span className="section-label">Projects</span>
           <h2 className="section-title">Things I've Built</h2>
           <p className="section-desc">
-            A mix of cybersecurity tooling, cloud infrastructure, and DevOps automation — all real, all deployed.
-          </p>
+           A collection of full-stack projects including career platforms, health applications, and university ERP systems.  </p>
         </motion.div>
 
         {/* 3-column card grid */}
@@ -127,7 +126,7 @@ export default function Projects() {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <a
-            href="https://github.com/NileshSharma71"
+            href="https://github.com/sahilyadav2023"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-outline"
