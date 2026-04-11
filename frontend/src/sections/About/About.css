@@ -1,0 +1,195 @@
+/* ─── About Section ───────────────────────────────────────────────────────── */
+
+.about-section {
+  background: var(--bg-secondary);
+}
+
+/* Two-column grid: photo | content */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--space-4xl);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+  }
+}
+
+/* ─── Photo Column ────────────────────────────────────────────────────────── */
+
+.about-photo-col {
+  display: flex;
+  justify-content: center;
+}
+
+.photo-frame {
+  position: relative;
+  width: 280px;
+  height: 310px;
+  flex-shrink: 0;
+}
+
+/* Offset background box — layered card effect */
+.photo-bg-box {
+  position: absolute;
+  inset: 0;
+  top: 16px;
+  left: 16px;
+  background: var(--accent-light);
+  border: 1.5px solid rgba(var(--accent-rgb), 0.25);
+  border-radius: var(--radius-xl);
+}
+
+body.dark .photo-bg-box {
+  background: rgba(var(--accent-rgb), 0.08);
+}
+
+/* Photo itself */
+.about-photo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: var(--radius-xl);
+  border: 1.5px solid var(--border);
+  background: var(--bg-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Floating badge bottom-left of photo */
+.photo-badge {
+  position: absolute;
+  z-index: 2;
+  bottom: -14px;
+  right: -14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.45rem 0.9rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-md);
+  white-space: nowrap;
+}
+
+/* ─── Content Column ──────────────────────────────────────────────────────── */
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.about-status {
+  display: inline-flex;
+  align-self: flex-start;
+}
+
+/* Bio paragraphs */
+.about-bio {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.about-bio p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.about-bio strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ─── Stats Row ───────────────────────────────────────────────────────────── */
+
+.about-stats {
+  display: flex;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  text-align: center;
+  min-width: 90px;
+}
+
+.stat-num {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ─── Certification Badges ────────────────────────────────────────────────── */
+
+.cert-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+  white-space: nowrap;
+  cursor: default;
+}
+
+.cert-badge:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+/* ─── About CTA Buttons ───────────────────────────────────────────────────── */
+
+.about-ctas {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-top: var(--space-xs);
+}
+
+/* ─── Mobile ──────────────────────────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .about-photo-col { order: -1; }
+  .photo-frame { width: 220px; height: 240px; }
+}

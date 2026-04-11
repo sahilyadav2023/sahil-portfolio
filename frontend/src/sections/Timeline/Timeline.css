@@ -1,0 +1,280 @@
+/* ─── Timeline Section ────────────────────────────────────────────────────── */
+
+.timeline-section {
+  background: var(--bg-primary);
+}
+
+/* ─── Legend ──────────────────────────────────────────────────────────────── */
+
+.tl-legend {
+  display: flex;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-3xl);
+  flex-wrap: wrap;
+}
+
+.tl-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.tl-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ─── Timeline Wrapper ────────────────────────────────────────────────────── */
+
+.tl-wrapper {
+  position: relative;
+  padding: var(--space-md) 0;
+}
+
+/* Vertical centre line */
+.tl-center-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--border) 5%,
+    var(--border) 95%,
+    transparent
+  );
+}
+
+/* ─── Timeline Item: 3-column grid layout ─────────────────────────────────── */
+/*  [card] | [dot] | [empty]   (left items)                                    */
+/*  [empty] | [dot] | [card]   (right items)                                   */
+
+.tl-item {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  align-items: start;
+  margin-bottom: var(--space-2xl);
+  gap: 0 var(--space-lg);
+}
+
+.tl-item:last-child { margin-bottom: 0; }
+
+/* Left item layout */
+.tl-left .tl-card   { grid-column: 1; grid-row: 1; }
+.tl-left .tl-dot-col { grid-column: 2; grid-row: 1; }
+.tl-left .tl-empty  { grid-column: 3; grid-row: 1; }
+
+/* Right item layout */
+.tl-right .tl-empty  { grid-column: 1; grid-row: 1; }
+.tl-right .tl-dot-col { grid-column: 2; grid-row: 1; }
+.tl-right .tl-card   { grid-column: 3; grid-row: 1; }
+
+/* Centre dot column */
+.tl-dot-col {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--space-lg);
+}
+
+.tl-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 4px var(--bg-primary);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.tl-dot-inner {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.7);
+}
+
+/* ─── Timeline Card ───────────────────────────────────────────────────────── */
+
+.tl-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Color accent bar on left edge */
+.tl-card::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 3px;
+  background: var(--tl-color, var(--accent));
+  border-radius: 3px 0 0 3px;
+}
+
+/* ─── Card Meta Row ───────────────────────────────────────────────────────── */
+
+.tl-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.tl-badge {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+}
+
+.tl-period {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.tl-current {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #22C55E;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Card Header ─────────────────────────────────────────────────────────── */
+
+.tl-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.tl-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tl-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+
+.tl-org {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Org name as a link — link icon fades in on hover */
+.tl-org-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.tl-org-link-icon {
+  opacity: 0;
+  transform: translateY(1px);
+  transition: opacity 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  color: var(--accent);
+}
+
+.tl-org-link:hover {
+  color: var(--accent);
+}
+
+.tl-org-link:hover .tl-org-link-icon {
+  opacity: 1;
+}
+
+/* ─── Description + Tags ─────────────────────────────────────────────────── */
+
+.tl-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* Bullet list — used for experience entries */
+.tl-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.tl-bullets li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.tl-bullets li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--tl-color, var(--accent));
+  font-weight: 700;
+}
+
+.tl-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.tl-tag {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.65rem;
+}
+
+/* ─── Mobile: single column ──────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .tl-center-line { left: 22px; }
+
+  .tl-item {
+    grid-template-columns: 48px 1fr;
+    gap: 0 var(--space-md);
+  }
+
+  /* All items: dot on left, card on right, no empty col */
+  .tl-left .tl-dot-col,
+  .tl-right .tl-dot-col { grid-column: 1; grid-row: 1; }
+
+  .tl-left .tl-card,
+  .tl-right .tl-card   { grid-column: 2; grid-row: 1; }
+
+  .tl-left .tl-empty,
+  .tl-right .tl-empty  { display: none; }
+}

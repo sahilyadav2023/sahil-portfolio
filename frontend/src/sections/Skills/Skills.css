@@ -1,0 +1,103 @@
+/* ─── Skills Section ──────────────────────────────────────────────────────── */
+
+.skills-section {
+  background: var(--bg-primary);
+}
+
+/* 2-column grid on desktop, 1 on mobile */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+@media (max-width: 720px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── Skill Card ──────────────────────────────────────────────────────────── */
+
+.skill-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  overflow: hidden;
+  cursor: default;
+}
+
+/* Top accent line — uses the per-card color CSS variable */
+.skill-card-accent-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--card-accent, var(--accent));
+  border-radius: 3px 3px 0 0;
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
+}
+
+.skill-card:hover .skill-card-accent-line {
+  opacity: 1;
+}
+
+/* ─── Card Header ─────────────────────────────────────────────────────────── */
+
+.skill-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.skill-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.skill-category {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 2px;
+  line-height: 1.3;
+}
+
+.skill-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ─── Skill Tags ──────────────────────────────────────────────────────────── */
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+/* Override the global .tag to use the card accent color */
+.skill-tag {
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 10%, transparent);
+  color: var(--card-accent, var(--accent));
+  border-color: color-mix(in srgb, var(--card-accent, var(--accent)) 25%, transparent);
+}
+
+/* Fallback for browsers without color-mix */
+@supports not (background: color-mix(in srgb, red, blue)) {
+  .skill-tag {
+    background: var(--accent-light);
+    color: var(--accent);
+    border-color: rgba(var(--accent-rgb), 0.2);
+  }
+}
+
+.skill-tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--card-accent, var(--accent)) 20%, transparent);
+}

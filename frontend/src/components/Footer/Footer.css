@@ -1,0 +1,17 @@
+.footer {
+  border-top: 1px solid var(--border);
+  padding: var(--space-xl) 0;
+  background: var(--bg-secondary);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}

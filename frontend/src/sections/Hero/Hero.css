@@ -1,0 +1,228 @@
+/* ─── Hero Section ────────────────────────────────────────────────────────── */
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ─── Background ──────────────────────────────────────────────────────────── */
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle dot-grid — gives a technical/blueprint feel */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.55;
+}
+
+body.dark .hero-grid { opacity: 0.25; }
+
+/* Radial gradient glow — emanates from top-left */
+.hero-glow {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 60%;
+  height: 70%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(var(--accent-rgb), 0.07) 0%,
+    transparent 70%
+  );
+}
+
+/* ─── Content ─────────────────────────────────────────────────────────────── */
+
+.hero-container {
+  position: relative;
+  z-index: 1;
+  padding-top: var(--space-4xl);
+  padding-bottom: var(--space-4xl);
+}
+
+.hero-content {
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Greeting */
+.hero-greeting {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  margin-top: var(--space-xs);
+}
+
+/* ─── Name ────────────────────────────────────────────────────────────────── */
+
+.hero-name {
+  font-size: clamp(3.2rem, 8.5vw, 6rem);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.hero-name-last {
+  /* Slightly lighter to create visual depth */
+  color: var(--text-secondary);
+}
+
+/* ─── Typing Role ─────────────────────────────────────────────────────────── */
+
+.hero-role {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-weight: 500;
+  color: var(--text-secondary);
+  min-height: 1.8rem;
+}
+
+.role-prefix {
+  color: var(--accent);
+  user-select: none;
+}
+
+.role-text {
+  color: var(--text-primary);
+}
+
+/* Blinking cursor */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--accent);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ─── Tagline ─────────────────────────────────────────────────────────────── */
+
+.hero-tagline {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 520px;
+  line-height: 1.75;
+  font-weight: 400;
+}
+
+/* ─── CTA Buttons ─────────────────────────────────────────────────────────── */
+
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-top: var(--space-xs);
+}
+
+/* ─── Social Links ────────────────────────────────────────────────────────── */
+
+.hero-socials {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.social-link {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.social-link::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+
+.social-link:hover {
+  color: var(--text-primary);
+}
+
+.social-link:hover::after {
+  width: 100%;
+}
+
+.social-sep {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--border-hover);
+}
+
+/* ─── Scroll Indicator ────────────────────────────────────────────────────── */
+
+.scroll-indicator {
+  position: absolute;
+  bottom: var(--space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+.scroll-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.1); }
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .hero-name { line-height: 1; }
+  .hero-ctas { gap: var(--space-sm); }
+  .scroll-indicator { display: none; }
+}
