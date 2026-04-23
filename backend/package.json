@@ -2,7 +2,7 @@
   "name": "portfolio-server",
   "version": "1.0.0",
   "type": "module",
-  "description": "REST API backend for Nilesh Sharma's portfolio",
+  "description": "REST API backend for sahil yadav's portfolio",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

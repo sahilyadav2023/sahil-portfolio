@@ -20,12 +20,12 @@ const filesDir = path.join(__dirname, '../files');
 
 export const downloadPDF = async (req, res) => {
   try {
-    const filePath = path.join(filesDir, 'Nilesh-Resume.pdf');
+    const filePath = path.join(filesDir, 'sahil-Resume.pdf');
 
     // Async file existence check (non-blocking)
     await fs.promises.access(filePath, fs.constants.R_OK);
 
-    res.setHeader('Content-Disposition', 'attachment; filename="Nilesh-Sharma-CV.pdf"');
+    res.setHeader('Content-Disposition', 'attachment; filename="sahil-yadav-CV.pdf"');
     res.setHeader('Content-Type', 'application/pdf');
 
     // Stream the file — does NOT load entire file into RAM (optimization)
@@ -54,14 +54,14 @@ export const downloadPDF = async (req, res) => {
 
 export const downloadDOCX = async (req, res) => {
   try {
-    const filePath = path.join(filesDir, 'Nilesh-Resume.docx');
+    const filePath = path.join(filesDir, 'sahil-Resume.docx');
 
     // Async file existence check
     await fs.promises.access(filePath, fs.constants.R_OK);
 
     res.setHeader(
       'Content-Disposition',
-      'attachment; filename="Nilesh-Sharma-CV.docx"'
+      'attachment; filename="sahil-yadav-CV.docx"'
     );
     res.setHeader(
       'Content-Type',
